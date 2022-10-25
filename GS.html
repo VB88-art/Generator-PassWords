@@ -1,0 +1,31 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-wzrnESqonljUrenFsqc015846JvRO57bZs3IO2EwfFsd15uHvIt+Y8vEf7N7fMAU" crossorigin="anonymous">
+<div class=""container>
+
+    <h3 id="generated_pwd"></h3>
+    <button onclick="generated_pwd(event);">GENERATED</button>
+    <br>
+    <i id="copy" class="fa fa-copy"></i>
+
+</div>
+
+<link rel="stylesheet" href="GS.css">
+
+<script>const output = document.getElementById('generated_pwd')
+    document.getElementById('copy').addEventListener('click', copy)
+    
+    function generated_pwd(event) {
+        const length = 10, charset = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,.!@#$%&*()-_' 
+        var pwd = ''
+        for (var i = 0, n = charset.length; i < length; ++i) { 
+            pwd += charset.charAt(Math.floor(Math.random() * n))
+        } 
+    
+        output.innerHTML = pwd
+    }
+    
+    function copy() {
+        const copyText = output.innerHTML
+        navigator.clipboard.writeText(copyText).then(() => {
+            alert('Copied to clipboard :' + copyText)
+        })
+    }</script>
